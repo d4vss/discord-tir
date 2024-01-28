@@ -8,7 +8,7 @@ class ClearThreadsEvent(commands.Cog):
         self.bot = bot
         self.clearThreads.start()
 
-    @tasks.loop(seconds=15)
+    @tasks.loop(seconds=21600)
     async def clearThreads(self):
         payload = await db.fetch("threadList", "guildId, threadId, clearAfter", True)
         for threadInfo in payload:
